@@ -2,7 +2,10 @@ package com.zhihu.matisse.internal.ui.widget;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
+
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
@@ -40,13 +43,13 @@ public class CheckRadioView extends AppCompatImageView {
 
     public void setChecked(boolean enable) {
         if (enable) {
-            setImageResource(R.drawable.ic_preview_radio_on);
+            setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.ic_preview_radio_on));
             mDrawable = getDrawable();
-            mDrawable.setColorFilter(mSelectedColor, PorterDuff.Mode.SRC_IN);
+          //  mDrawable.setColorFilter( new PorterDuffColorFilter(mSelectedColor, PorterDuff.Mode.SRC_IN));
         } else {
-            setImageResource(R.drawable.ic_preview_radio_off);
+            setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.ic_preview_radio_off));
             mDrawable = getDrawable();
-            mDrawable.setColorFilter(mUnSelectUdColor, PorterDuff.Mode.SRC_IN);
+          //  mDrawable.setColorFilter( new PorterDuffColorFilter(mUnSelectUdColor, PorterDuff.Mode.SRC_IN));
         }
     }
 
@@ -55,6 +58,6 @@ public class CheckRadioView extends AppCompatImageView {
         if (mDrawable == null) {
             mDrawable = getDrawable();
         }
-        mDrawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+       // mDrawable.setColorFilter( new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
     }
 }
